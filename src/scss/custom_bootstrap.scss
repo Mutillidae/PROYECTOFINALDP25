@@ -1,0 +1,13 @@
+
+// Sobrescribir variables antes de usar Bootstrap
+$body-bg: #f8f9fa;
+$primary: #1a73e8;
+
+// Importar Bootstrap desde node_modules
+@use "bootstrap" as *;
+
+// Tus estilos personalizados
+body {
+  font-family: 'Arial', sans-serif;
+}
+
