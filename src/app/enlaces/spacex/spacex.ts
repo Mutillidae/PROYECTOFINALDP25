@@ -9,12 +9,21 @@ import { Component, inject } from '@angular/core';
 })
 export class Spacex {
 
+  public dataFirebase: any;
   private httpClient = inject(HttpClient);
   constructor() {}
 
-  ngOnInit() {}
-
-  getData() {
-    return this.httpClient.get('https://examenfinal25dp-default-rtdb.firebaseio.com/properties');
+  ngOnInit() {
+    this.getFirebaseData();
   }
+
+  getFirebaseData() {
+    this.httpClient.get('https://examenfinal25dp-default-rtdb.firebaseio.com/properties.json').subscribe((data) => {
+      this.dataFirebase = data;
+      console.log(data);
+    });
+  }
+
+
+  
 }

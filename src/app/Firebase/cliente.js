@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-
+import {getAuth, onAuthStateChanged}from'firebase/auth';
+import {getFirestore, collection, getDocs, getDoc, GeoPoint} from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyA34bN4f06kp3psHwnG0HVmgg0KCQs8z8w",
@@ -13,6 +14,39 @@ const firebaseConfig = {
     measurementId: "G-VGXVN6ZHSJ"
 };
 
+
+const auth = getAuth(firebaseConfig);
+const db = getFirestore(firebaseConfig);
+db.collection('clientes').getDocs();
+const clientesCol = collection(db, 'clientes');
+const snapshotgetDocs = await getDocs(clientesCol);
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const getAnalytics = getAnalytics(app);
 console.log(app);
+
+
+onAuthStateChanged(auth, (user) => {
+    if (user !== null) {
+        console.log('Usuario logueado:', user.email);
+    } else {
+        console.log('No hay usuario logueado');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
