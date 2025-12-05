@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 
 @Component({
   selector: 'app-spacex',
@@ -8,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class Spacex {
 
+  private httpClient = inject(HttpClient);
+  constructor() {}
+
+  ngOnInit() {}
+
+  getData() {
+    return this.httpClient.get('https://examenfinal25dp-default-rtdb.firebaseio.com/properties');
+  }
 }
